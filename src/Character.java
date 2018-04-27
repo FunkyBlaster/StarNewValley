@@ -4,11 +4,15 @@ public class Character {
     private ArrayList inventory;
     private ArrayList equipment;
     private int fatigue;
+    private int BACKPACK;
+    private int SHOES;
 
     public Character() {
         inventory = new ArrayList(20);
         equipment = new ArrayList(2);
         //equipment just backpack and shoes ATM; possibly armor later?
+        BACKPACK = 0;
+        SHOES = 1;
     }
     public void decreaseFatigue(int decrement) {
         fatigue = fatigue-decrement;
@@ -25,7 +29,12 @@ public class Character {
     public void setInventoryLocation(Item item, int index) {
         inventory.set(index, item);
     }
-    public void setEquipment(Equippable item, int index) {
-        //backpack location one, shoes location 2
+    public void addToEquipment(Equippable equippable) {
+
     }
+    public void setEquipment(Equippable equippable, int index) {
+        //backpack location zero, shoes location 1
+        equipment.set(index,equippable);
+    }
+
 }

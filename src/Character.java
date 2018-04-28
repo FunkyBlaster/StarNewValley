@@ -1,15 +1,19 @@
+import sun.awt.EventQueueItem;
+
 import java.util.ArrayList;
 
 public class Character {
-    private ArrayList inventory;
-    private ArrayList equipment;
+    private ArrayList<Item> inventory;
+    private ArrayList<Equippable> equipment;
     private int fatigue;
     private int BACKPACK;
     private int SHOES;
+    private int xCoord;
+    private int yCoord;
 
     public Character() {
-        inventory = new ArrayList(20);
-        equipment = new ArrayList(2);
+        inventory = new ArrayList<>(20);
+        equipment = new ArrayList<>(2);
         //equipment just backpack and shoes ATM; possibly armor later?
         BACKPACK = 0;
         SHOES = 1;
@@ -30,11 +34,26 @@ public class Character {
         inventory.set(index, item);
     }
     public void addToEquipment(Equippable equippable) {
-
+        equipment.add(equippable);
     }
     public void setEquipment(Equippable equippable, int index) {
         //backpack location zero, shoes location 1
         equipment.set(index,equippable);
     }
-
+    public void moveHorizontal() {
+        //default move method insures constant movement and reduces stuttering (using smaller move values [currently 1 coordinate])
+        xCoord++;
+    }
+    public void moveHorizontalManual(int x) {
+        //manual method for moving, only use if needed
+        xCoord = xCoord + x;
+    }
+    public void moveVertical() {
+        //default move method insures constant movement and reduces stuttering (using smaller move values [currently 1 coordinate])
+        xCoord++;
+    }
+    public void moveVerticalManual(int y) {
+        //manual method for moving, only use if needed
+        yCoord = yCoord + y;
+    }
 }
